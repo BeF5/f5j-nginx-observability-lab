@@ -1,0 +1,19 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: bookinfo-vs
+  namespace: staging
+spec:
+  ingressClassName: nginx
+  host: bookinfo.example.com
+  policies:
+  - name: waf-policy
+  upstreams:
+  - name: bookinfo
+    service: productpage
+    port: 9080
+  routes:
+  - path: /
+    action:
+      pass: bookinfo
+

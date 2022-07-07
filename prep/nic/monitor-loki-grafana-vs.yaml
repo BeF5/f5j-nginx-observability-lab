@@ -1,0 +1,17 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: loki-grafana-vs
+  namespace: monitor
+spec:
+  ingressClassName: nginx2
+  host: grafana.example.com
+  upstreams:
+  - name: grafana
+    service: loki-grafana
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: grafana
+

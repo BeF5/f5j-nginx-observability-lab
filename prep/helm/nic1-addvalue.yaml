@@ -1,0 +1,68 @@
+nginxServiceMesh:
+  enable: true
+  enableEgress: true
+
+controller:
+  nginxplus: true
+  image:
+    repository: registry.example.com/root/nic/nginxplus-ingress-nap-dos
+    tag: "2.2.2"
+  enableLatencyMetrics: true
+
+  ## Support for App Protect
+  appprotect:
+    enable: true
+
+  ## Support for App Protect Dos
+  appprotectdos:
+    enable: true
+
+  ingressClass: nginx
+
+  ## Enable the custom resources.
+  enableCustomResources: true
+
+  ## Enable preview policies. This parameter is deprecated. To enable OIDC Policies please use controller.enableOIDC instead.
+  enablePreviewPolicies: false
+
+  ## Enable OIDC policies.
+  enableOIDC: true
+
+  globalConfiguration:
+    ## Creates the GlobalConfiguration custom resource. Requires controller.enableCustomResources.
+    create: true
+
+    ## The spec of the GlobalConfiguration for defining the global configuration parameters of the Ingress Controller.
+    spec: {}
+      # listeners:
+      # - name: dns-udp
+      #   port: 5353
+      #   protocol: UDP
+      # - name: dns-tcp
+      #   port: 5353
+      #   protocol: TCP
+
+  ## Enable custom NGINX configuration snippets in Ingress, VirtualServer, VirtualServerRoute and TransportServer resources.
+  enableSnippets: true
+
+  service:
+    ## Creates a service to expose the Ingress Controller pods.
+    create: true
+    ## The type of service to create for the Ingress Controller.
+    type: NodePort
+
+  ## Enable collection of latency metrics for upstreams. Requires prometheus.create.
+  enableLatencyMetrics: true
+
+prometheus:
+  ## Expose NGINX or NGINX Plus metrics in the Prometheus format.
+  create: true
+
+  ## Configures the port to scrape the metrics.
+  port: 9113
+
+  ## Specifies the namespace/name of a Kubernetes TLS Secret which will be used to protect the Prometheus endpoint.
+  secret: ""
+
+  ## Configures the HTTP scheme used.
+  scheme: http

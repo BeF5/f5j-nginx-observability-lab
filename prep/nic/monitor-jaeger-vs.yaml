@@ -1,0 +1,17 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: jaeger-vs
+  namespace: monitor
+spec:
+  ingressClassName: nginx2
+  host: jaeger.example.com
+  upstreams:
+  - name: jaeger
+    service: jaeger-query
+    port: 16686
+  routes:
+  - path: /
+    action:
+      pass: jaeger
+

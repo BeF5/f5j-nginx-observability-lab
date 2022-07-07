@@ -1,0 +1,61 @@
+# Environment to deploy the mesh into.
+# Valid values: kubernetes, openshift
+environment: "kubernetes"
+
+# Enable UDP traffic proxying (beta). Linux kernel 4.18 or greater is required.
+enableUDP: false
+
+# Deploy Grafana as a part of the NGINX Service Mesh.
+# Note: This configurable will be removed in version 1.5
+# Valid values: true, false
+deployGrafana: false
+
+# NGINX log format.
+# Valid values: default, json
+nginxLogFormat: "json"
+
+# NGINX load balancing method.
+# Valid values: [least_conn, least_time, least_time last_byte, least_time last_byte inflight,
+# random, random two, random two least_conn, random two least_time, random two least_time=last_byte, round_robin]
+nginxLBMethod: "round_robin"
+
+# The address of a Prometheus server deployed in your Kubernetes cluster.
+# Address should be in the format <service-name>.<namespace>:<service-port>.
+prometheusAddress: "prometheus-server.monitor:80"
+
+# NGINX Service Mesh auto-injection settings.
+autoInjection:
+  disable: true
+
+  # Enable automatic sidecar injection for specific namespaces.
+  # Must be used with "disable".
+  enabledNamespaces: [ staging , prod ]
+
+# NGINX Service Mesh tracing settings.
+# Cannot be set when telemetry is set.
+# If deploying with tracing, make sure the telemetry object is set to {}.
+tracing:
+  # Disable tracing for all services.
+  # Note: This configurable will be removed in version 1.5
+  disable: false
+
+  # The address of a tracing server deployed in your Kubernetes cluster.
+  # Address should be in the format <service-name>.<namespace>:<service_port>.
+  address: "jaeger-agent.monitor:6831"
+
+  # The tracing backend that you want to use.
+  # Valid values: datadog, jaeger, zipkin
+  backend: "jaeger"
+
+  # The sample rate to use for tracing. Float between 0 and 1.
+  sampleRate: 1
+
+# Mutual TLS settings. See https://docs.nginx.com/nginx-service-mesh/guides/secure-traffic-mtls for more info.
+mtls:
+  # mTLS mode for pod-to-pod communication.
+  # Valid values: off, permissive, strict
+  mode: "strict"
+
+  # Use persistent storage; "on" assumes that a StorageClass exists.
+  # Valid values: on, off
+  persistentStorage: "off"
