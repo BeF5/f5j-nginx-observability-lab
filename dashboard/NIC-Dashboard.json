@@ -172,7 +172,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "sum(nginx_ingress_controller_nginx_last_reload_status{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_nginx_last_reload_status{app=\"\$NIC\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -252,7 +252,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "sum(nginx_ingress_controller_nginx_reloads_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_nginx_reloads_total{app=\"\$NIC\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -334,7 +334,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(nginx_ingress_controller_nginx_reload_errors_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_nginx_reload_errors_total{app=\"\$NIC\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -415,7 +415,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_received{app=\"$app\"}[5m]))",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_received{app=\"\$NIC\"}[5m]))",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -431,7 +431,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_sent{app=\"$app\"}[5m]))",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_sent{app=\"\$NIC\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "10s",
@@ -524,7 +524,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "avg(nginx_ingress_controller_nginx_last_reload_milliseconds{app=\"$app\"})",
+          "expr": "avg(nginx_ingress_controller_nginx_last_reload_milliseconds{app=\"\$NIC\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -609,7 +609,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_http_requests_total{app=\"$app\"}[5m]))",
+          "expr": "sum(irate(nginx_ingress_nginxplus_http_requests_total{app=\"\$NIC\"}[5m]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -760,7 +760,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum( irate(  nginx_ingress_nginxplus_server_zone_requests{app=\"$app\"}[5m])) ",
+          "expr": "sum( irate(  nginx_ingress_nginxplus_server_zone_requests{app=\"\$NIC\"}[5m])) ",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -827,7 +827,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(nginx_ingress_controller_ingress_resources_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_ingress_resources_total{app=\"\$NIC\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -899,7 +899,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"1xx\",app=\"$app\"}[5m])) ",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"1xx\",app=\"\$NIC\"}[5m])) ",
           "interval": "",
           "legendFormat": "1xx",
           "refId": "A"
@@ -910,7 +910,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"2xx\",app=\"$app\"}[5m])) ",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"2xx\",app=\"\$NIC\"}[5m])) ",
           "interval": "",
           "legendFormat": "2xx",
           "refId": "B"
@@ -921,7 +921,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"3xx\",app=\"$app\"}[5m])) ",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"3xx\",app=\"\$NIC\"}[5m])) ",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -938,7 +938,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"4xx\",app=\"$app\"}[5m])) ",
+          "expr": "sum(irate(nginx_ingress_nginxplus_server_zone_responses{code=\"4xx\",app=\"\$NIC\"}[5m])) ",
           "hide": false,
           "interval": "",
           "legendFormat": "4xx",
@@ -1053,7 +1053,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{code=~\"[4].*\",app=\"$app\"}[2m]))",
+          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{code=~\"[4].*\",app=\"\$NIC\"}[2m]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1069,7 +1069,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{code=~\"[5].*\",app=\"$app\"}[2m]))",
+          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{code=~\"[5].*\",app=\"\$NIC\"}[2m]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1160,7 +1160,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(nginx_ingress_controller_virtualserver_resources_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_virtualserver_resources_total{app=\"\$NIC\"})",
           "interval": "",
           "legendFormat": "Virtual Server",
           "refId": "C"
@@ -1171,7 +1171,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(nginx_ingress_controller_virtualserverroute_resources_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_virtualserverroute_resources_total{app=\"\$NIC\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Virtual Server Router",
@@ -1183,7 +1183,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(nginx_ingress_controller_transportserver_resources_total{app=\"$app\"})",
+          "expr": "sum(nginx_ingress_controller_transportserver_resources_total{app=\"\$NIC\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Transport Server",
@@ -1270,7 +1270,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate( nginx_ingress_nginxplus_server_zone_responses{code!~\"[4-5].*\",app=\"$app\"}[5m])) / sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"$app\"}[5m]))",
+          "expr": "sum(rate( nginx_ingress_nginxplus_server_zone_responses{code!~\"[4-5].*\",app=\"\$NIC\"}[5m])) / sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"\$NIC\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1358,7 +1358,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"$app\"} [5m])) by (code,server_zone)\r\n",
+          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"\$NIC\"} [5m])) by (code,server_zone)\r\n",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -1446,7 +1446,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": false,
-          "expr": "nginx_ingress_nginxplus_upstream_server_state{app=\"$app\"} ",
+          "expr": "nginx_ingress_nginxplus_upstream_server_state{app=\"\$NIC\"} ",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1518,7 +1518,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"$app\", code=~\"[4].*\"} [5m])) by (code,server_zone)",
+          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"\$NIC\", code=~\"[4].*\"} [5m])) by (code,server_zone)",
           "interval": "",
           "legendFormat": "Client Errors",
           "refId": "A"
@@ -1529,7 +1529,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"$app\", code=~\"[5].*\"} [5m])) by (code,server_zone)",
+          "expr": "sum(rate(nginx_ingress_nginxplus_server_zone_responses{app=\"\$NIC\", code=~\"[5].*\"} [5m])) by (code,server_zone)",
           "interval": "",
           "legendFormat": "Server Errors",
           "refId": "B"
@@ -1636,7 +1636,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "irate(nginx_ingress_nginxplus_ssl_handshakes{app=\"$app\"}[5m])",
+          "expr": "irate(nginx_ingress_nginxplus_ssl_handshakes{app=\"\$NIC\"}[5m])",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{instance}} Handshakes",
@@ -1648,7 +1648,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "irate(nginx_ingress_nginxplus_ssl_handshakes_failed{app=\"$app\"}[5m])",
+          "expr": "irate(nginx_ingress_nginxplus_ssl_handshakes_failed{app=\"\$NIC\"}[5m])",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{instance}} Failed",
@@ -1660,7 +1660,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "irate(nginx_ingress_nginxplus_ssl_sessions_reuses{app=\"$app\"}[5m])",
+          "expr": "irate(nginx_ingress_nginxplus_ssl_sessions_reuses{app=\"\$NIC\"}[5m])",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{instance}} Reuses",
