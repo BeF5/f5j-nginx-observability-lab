@@ -1,14 +1,19 @@
+# NGINX Service Mesh image registry settings.
+registry:
+  # Hostname:port (if needed) for registry and path to images.
+  # Affects: nginx-mesh-api, nginx-mesh-cert-reloader, nginx-mesh-init, nginx-mesh-metrics, nginx-mesh-sidecar
+  server: "docker-registry.nginx.com/nsm"
+
+  # Tag used for pulling images from registry
+  # Affects: nginx-mesh-api, nginx-mesh-cert-reloader, nginx-mesh-init, nginx-mesh-metrics, nginx-mesh-sidecar
+  imageTag: "1.6.0"
+
 # Environment to deploy the mesh into.
 # Valid values: kubernetes, openshift
 environment: "kubernetes"
 
 # Enable UDP traffic proxying (beta). Linux kernel 4.18 or greater is required.
 enableUDP: false
-
-# Deploy Grafana as a part of the NGINX Service Mesh.
-# Note: This configurable will be removed in version 1.5
-# Valid values: true, false
-deployGrafana: false
 
 # NGINX log format.
 # Valid values: default, json
@@ -23,22 +28,18 @@ nginxLBMethod: "round_robin"
 # Address should be in the format <service-name>.<namespace>:<service-port>.
 prometheusAddress: "prometheus-server.monitor:80"
 
-# NGINX Service Mesh auto-injection settings.
-autoInjection:
-  disable: true
+# Globally disable automatic sidecar injection upon resource creation.
+# Use either "enabledNamespaces" or a namespace label to enable automatic injection.
+disableAutoInjection: true
 
-  # Enable automatic sidecar injection for specific namespaces.
-  # Must be used with "disable".
-  enabledNamespaces: [ staging , prod ]
+# Enable automatic sidecar injection for specific namespaces.
+# Must be used with "disableAutoInjection".
+enabledNamespaces: [ staging , prod ]
 
-# NGINX Service Mesh tracing settings.
+# NGINX Service Mesh tracing settings. Deprecated in favor of telemetry.
 # Cannot be set when telemetry is set.
-# If deploying with tracing, make sure the telemetry object is set to {}.
+# If deploying with tracing, uncomment the following object and set the telemetry object to {}.
 tracing:
-  # Disable tracing for all services.
-  # Note: This configurable will be removed in version 1.5
-  disable: false
-
   # The address of a tracing server deployed in your Kubernetes cluster.
   # Address should be in the format <service-name>.<namespace>:<service_port>.
   address: "jaeger-agent.monitor:6831"
@@ -50,7 +51,6 @@ tracing:
   # The sample rate to use for tracing. Float between 0 and 1.
   sampleRate: 1
 
-# Mutual TLS settings. See https://docs.nginx.com/nginx-service-mesh/guides/secure-traffic-mtls for more info.
 mtls:
   # mTLS mode for pod-to-pod communication.
   # Valid values: off, permissive, strict
