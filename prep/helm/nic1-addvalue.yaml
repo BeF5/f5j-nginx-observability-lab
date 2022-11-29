@@ -6,7 +6,7 @@ controller:
   nginxplus: true
   image:
     repository: registry.example.com/root/nic/nginxplus-ingress-nap-dos
-    tag: "2.2.2"
+    tag: "2.4.1"
   enableLatencyMetrics: true
 
   ## Support for App Protect
