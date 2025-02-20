@@ -1,6 +1,8 @@
 alertmanager:
   persistentVolume:
     enabled: false
+  persistence:
+    enabled: false
 server:
   persistentVolume:
     enabled: false
