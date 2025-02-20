@@ -16,5 +16,5 @@ query:
   enabled: false
 agent:
   enabled: false
-
-
+storage:
+  type: memory
